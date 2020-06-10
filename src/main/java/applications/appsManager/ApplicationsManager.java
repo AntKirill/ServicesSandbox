@@ -4,7 +4,6 @@ import applications.Application;
 import applications.ApplicationCreator;
 import applications.googleCalendarAndTrelloSynch.GoogleCalendarAndTrelloSynchCreator;
 import applications.spreadsheetTimeLogsCleanup.TimeLogsCleanuperCreator;
-import applications.trelloCardsPosting.TrelloCardsPostingCreator;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -15,10 +14,6 @@ public class ApplicationsManager {
 
     public static Application createTimeLogsCleanuper() throws IOException, GeneralSecurityException {
         return new TimeLogsCleanuperCreator().createApplication();
-    }
-
-    public static Application createTrelloCardsPoster() throws IOException, GeneralSecurityException {
-        return new TrelloCardsPostingCreator().createApplication();
     }
 
     public static Application createGoogleCalendarAndTrelloSynchronizer() throws IOException, GeneralSecurityException {
