@@ -1,5 +1,15 @@
-# Compiled class file
 *.class
+.idea
+build
+out
+src/main/*credentials.json
+rsa.private
+aes.key
+.appData
+gradlew
+gradlew.bat
+gradle
+.gradle
 
 # Log file
 *.log
