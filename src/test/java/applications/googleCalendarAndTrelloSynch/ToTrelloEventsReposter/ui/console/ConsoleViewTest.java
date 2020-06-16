@@ -1,7 +1,7 @@
-package applications.googleCalendarAndTrelloSynch.ui.console;
+package applications.googleCalendarAndTrelloSynch.ToTrelloEventsReposter.ui.console;
 
-import applications.googleCalendarAndTrelloSynch.GoogleCalendarAndTrelloSynchCreator;
-import applications.googleCalendarAndTrelloSynch.business.GoogleCalendarAndTrelloSynchController;
+import applications.googleCalendarAndTrelloSynch.ToTrelloEventsReposter.GoogleCalendarAndTrelloSynchCreator;
+import applications.googleCalendarAndTrelloSynch.ToTrelloEventsReposter.business.GoogleCalendarAndTrelloSynchController;
 import org.junit.jupiter.api.Test;
 
 import javax.naming.ConfigurationException;
