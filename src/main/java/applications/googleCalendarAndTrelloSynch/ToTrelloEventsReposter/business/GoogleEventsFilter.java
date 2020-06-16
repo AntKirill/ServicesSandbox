@@ -1,4 +1,4 @@
-package applications.googleCalendarAndTrelloSynch.business;
+package applications.googleCalendarAndTrelloSynch.ToTrelloEventsReposter.business;
 
 import com.google.api.services.calendar.model.Event;
 import org.jetbrains.annotations.NotNull;

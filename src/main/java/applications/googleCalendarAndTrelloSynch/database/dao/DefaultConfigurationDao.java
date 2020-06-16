@@ -1,6 +1,6 @@
 package applications.googleCalendarAndTrelloSynch.database.dao;
 
-import applications.googleCalendarAndTrelloSynch.Configuration;
+import applications.googleCalendarAndTrelloSynch.ToTrelloEventsReposter.Configuration;
 import database.dao.Dao;
 import org.jetbrains.annotations.Nullable;
 

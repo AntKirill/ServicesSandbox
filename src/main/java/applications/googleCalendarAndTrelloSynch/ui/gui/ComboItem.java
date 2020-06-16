@@ -1,8 +1,6 @@
 package applications.googleCalendarAndTrelloSynch.ui.gui;
 
-import com.google.api.client.json.GenericJson;
-
-public class ComboItem<T extends GenericJson> {
+public class ComboItem<T> {
     private String key;
     private T value;
 

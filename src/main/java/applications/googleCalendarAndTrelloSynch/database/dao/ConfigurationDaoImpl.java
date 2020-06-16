@@ -1,7 +1,7 @@
 package applications.googleCalendarAndTrelloSynch.database.dao;
 
 import applications.googleCalendarAndTrelloSynch.ApplicationConstants;
-import applications.googleCalendarAndTrelloSynch.Configuration;
+import applications.googleCalendarAndTrelloSynch.ToTrelloEventsReposter.Configuration;
 import com.google.api.client.json.GenericJson;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.calendar.model.Calendar;
@@ -32,7 +32,7 @@ public class ConfigurationDaoImpl extends DatabaseHandler implements DefaultConf
 
     public static ConfigurationDaoImpl createConfigurationDaoImpl() {
         ConfigurationDaoImpl configurationDao = new ConfigurationDaoImpl(ApplicationConstants.DB_NAME);
-        configurationDao.runUpdateNoThrow("CREATE TABLE IF NOT EXISTS CONFIGURATION\n" +
+        configurationDao.runUpdateNoThrow("CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "\n" +
                 "(\n" +
                 "    SETTING_TYPE TEXT,\n" +
                 "    SETTING_ID   TEXT\n" +

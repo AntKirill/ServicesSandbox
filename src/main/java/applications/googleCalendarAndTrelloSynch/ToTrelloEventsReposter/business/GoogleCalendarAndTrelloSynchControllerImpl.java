@@ -1,6 +1,6 @@
-package applications.googleCalendarAndTrelloSynch.business;
+package applications.googleCalendarAndTrelloSynch.ToTrelloEventsReposter.business;
 
-import applications.googleCalendarAndTrelloSynch.Configuration;
+import applications.googleCalendarAndTrelloSynch.ToTrelloEventsReposter.Configuration;
 import applications.googleCalendarAndTrelloSynch.database.TrelloListByBoardIdSpecification;
 import applications.googleCalendarAndTrelloSynch.database.dao.*;
 import com.google.api.services.calendar.model.Calendar;

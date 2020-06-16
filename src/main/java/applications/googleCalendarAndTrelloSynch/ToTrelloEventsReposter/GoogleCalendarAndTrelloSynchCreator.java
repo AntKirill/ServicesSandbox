@@ -1,11 +1,12 @@
-package applications.googleCalendarAndTrelloSynch;
+package applications.googleCalendarAndTrelloSynch.ToTrelloEventsReposter;
 
 import applications.Application;
 import applications.ApplicationCreator;
-import applications.googleCalendarAndTrelloSynch.business.GoogleCalendarAndTrelloSynchController;
-import applications.googleCalendarAndTrelloSynch.business.GoogleCalendarAndTrelloSynchControllerImpl;
-import applications.googleCalendarAndTrelloSynch.ui.console.ConsoleView;
-import applications.googleCalendarAndTrelloSynch.ui.gui.GoogleCalendarTrelloSynchDialog;
+import applications.googleCalendarAndTrelloSynch.ApplicationConstants;
+import applications.googleCalendarAndTrelloSynch.ToTrelloEventsReposter.business.GoogleCalendarAndTrelloSynchController;
+import applications.googleCalendarAndTrelloSynch.ToTrelloEventsReposter.business.GoogleCalendarAndTrelloSynchControllerImpl;
+import applications.googleCalendarAndTrelloSynch.ToTrelloEventsReposter.ui.console.ConsoleView;
+import applications.googleCalendarAndTrelloSynch.ToTrelloEventsReposter.ui.gui.GoogleCalendarTrelloSynchDialog;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -21,18 +22,18 @@ public class GoogleCalendarAndTrelloSynchCreator extends ApplicationCreator {
     }
 
     @Override
-    protected Object createApplicationController() throws IOException, GeneralSecurityException {
+    protected @NotNull Object createApplicationController() throws IOException, GeneralSecurityException {
         return GoogleCalendarAndTrelloSynchControllerImpl.create();
     }
 
     @Override
-    protected Application.Viewable createConsoleUi(Object applicationController) {
+    protected Application.@NotNull Viewable createConsoleUi(Object applicationController) {
         GoogleCalendarAndTrelloSynchController controller = (GoogleCalendarAndTrelloSynchController) applicationController;
         return new ConsoleView(controller);
     }
 
     @Override
-    protected Application.Viewable createGui(Object applicationController, @Nullable JFrame parent) {
+    protected Application.@NotNull Viewable createGui(Object applicationController, @Nullable JFrame parent) {
         return () -> {
             GoogleCalendarTrelloSynchDialog dialog = new GoogleCalendarTrelloSynchDialog(parent, (GoogleCalendarAndTrelloSynchController) applicationController);
             dialog.prepareAndShow();

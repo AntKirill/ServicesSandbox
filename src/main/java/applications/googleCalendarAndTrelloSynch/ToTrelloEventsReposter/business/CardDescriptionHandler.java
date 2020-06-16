@@ -1,4 +1,4 @@
-package applications.googleCalendarAndTrelloSynch.business;
+package applications.googleCalendarAndTrelloSynch.ToTrelloEventsReposter.business;
 
 import com.vladsch.flexmark.html2md.converter.FlexmarkHtmlConverter;
 import com.vladsch.flexmark.util.data.MutableDataSet;

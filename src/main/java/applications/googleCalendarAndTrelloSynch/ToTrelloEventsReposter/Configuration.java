@@ -1,4 +1,4 @@
-package applications.googleCalendarAndTrelloSynch;
+package applications.googleCalendarAndTrelloSynch.ToTrelloEventsReposter;
 
 import com.google.api.services.calendar.model.Calendar;
 import network.services.trello.entities.TrelloBoard;
