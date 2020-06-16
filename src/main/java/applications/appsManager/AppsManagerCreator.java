@@ -111,7 +111,10 @@ public class AppsManagerCreator extends ApplicationCreator {
             @Override
             public void show() {
                 SwingUtilities.invokeLater(() -> {
-                    JFrame allAppsTogetherFrame = new AllAppsTogether(Utils.APPLICATION_NAME, (AppsManagerController) applicationController);
+                    Thread.setDefaultUncaughtExceptionHandler(new MyHandler());
+                    JFrame allAppsTogetherFrame = new AllAppsTogether(Utils.APPLICATION_NAME,
+                            (AppsManagerController) applicationController);
+                    allAppsTogetherFrame.pack();
                     allAppsTogetherFrame.setSize(500, 300);
                     centreWindow(allAppsTogetherFrame);
                     allAppsTogetherFrame.setVisible(true);
@@ -119,4 +122,13 @@ public class AppsManagerCreator extends ApplicationCreator {
             }
         };
     }
+
+    private static final class MyHandler implements Thread.UncaughtExceptionHandler {
+
+        @Override
+        public void uncaughtException(Thread t, Throwable e) {
+            LOGGER.error("Exception caught: ", e);
+        }
+    }
+
 }
