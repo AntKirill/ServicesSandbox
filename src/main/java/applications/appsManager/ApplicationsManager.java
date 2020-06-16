@@ -2,7 +2,8 @@ package applications.appsManager;
 
 import applications.Application;
 import applications.ApplicationCreator;
-import applications.googleCalendarAndTrelloSynch.GoogleCalendarAndTrelloSynchCreator;
+import applications.googleCalendarAndTrelloSynch.GoogleCalendarEventsShifter.GoogleCalendarEventsShifterCreator;
+import applications.googleCalendarAndTrelloSynch.ToTrelloEventsReposter.GoogleCalendarAndTrelloSynchCreator;
 import applications.spreadsheetTimeLogsCleanup.TimeLogsCleanuperCreator;
 
 import java.io.IOException;
@@ -24,6 +25,7 @@ public class ApplicationsManager {
         return Arrays.asList(
                 new GoogleCalendarAndTrelloSynchCreator(),
 //                new TrelloCardsPostingCreator(),
-                new TimeLogsCleanuperCreator());
+                new TimeLogsCleanuperCreator(),
+                new GoogleCalendarEventsShifterCreator());
     }
 }
