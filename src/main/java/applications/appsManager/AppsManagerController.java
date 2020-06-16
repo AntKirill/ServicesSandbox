@@ -11,4 +11,9 @@ import java.security.GeneralSecurityException;
 
 public interface AppsManagerController extends Application.ApplicationController {
     Application createNewApplication(@NotNull ApplicationCreator applicationCreator, boolean isGuiMode, @Nullable JFrame parent) throws IOException, GeneralSecurityException;
+
+    @Nullable
+    String getDefaultApplicationName();
+
+    void updateDefaultApplicationName(@NotNull String name);
 }
