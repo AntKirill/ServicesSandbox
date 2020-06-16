@@ -22,11 +22,12 @@ public class TimeLogsCleanuperCreator extends ApplicationCreator {
     }
 
     @Override
-    protected Object createApplicationController() throws IOException, GeneralSecurityException {
+    protected @NotNull Object createApplicationController() throws IOException, GeneralSecurityException {
         return TimeLogsCleanuperController.createTimeLogsCleanuperController();
     }
 
     @Override
+    @NotNull
     protected Application.Viewable createConsoleUi(Object applicationController) {
         TimeLogsCleanuperController controller = (TimeLogsCleanuperController) applicationController;
         return () -> {
@@ -40,6 +41,7 @@ public class TimeLogsCleanuperCreator extends ApplicationCreator {
     }
 
     @Override
+    @NotNull
     protected Application.Viewable createGui(Object applicationController, @Nullable JFrame parent) {
         throw new UnsupportedOperationException("Gui is not supported for " + getApplicationName());
     }

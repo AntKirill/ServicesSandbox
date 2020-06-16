@@ -35,9 +35,12 @@ public abstract class ApplicationCreator {
     @NotNull
     public abstract String getApplicationName();
 
+    @NotNull
     protected abstract Object createApplicationController() throws IOException, GeneralSecurityException;
 
+    @NotNull
     protected abstract Application.Viewable createConsoleUi(Object applicationController);
 
+    @NotNull
     protected abstract Application.Viewable createGui(Object applicationController, @Nullable JFrame parent);
 }
