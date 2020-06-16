@@ -7,6 +7,8 @@ import com.google.api.services.calendar.model.CalendarListEntry;
 import com.google.api.services.calendar.model.Event;
 import com.google.api.services.calendar.model.Events;
 import network.services.ApiRequestsRunner;
+import network.services.google.DateTimeConverter;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -98,6 +100,37 @@ public final class GoogleCalendarApiRequestsRunner implements ApiRequestsRunner 
             events.addAll(eventsOfCalendar.getItems());
         }
         return events;
+    }
+
+    public List<Event> getUsualEventsOnDateFromCalendar(LocalDate date,
+                                                        com.google.api.services.calendar.model.Calendar calendar) throws IOException {
+        LocalDateTime startDateTime = date.atStartOfDay();
+        LocalDateTime endDateTime = date.plusDays(1).atStartOfDay();
+        DateTimeConverter dateTimeConverterForTimeZone = getDateTimeConverterForTimeZone(calendar.getTimeZone());
+        DateTime timeMinDateTime = dateTimeConverterForTimeZone.toGoogleDateTime(startDateTime);
+        DateTime timeMaxDateTime = dateTimeConverterForTimeZone.toGoogleDateTime(endDateTime);
+        List<Event> allDateEvents = myService.events().list(calendar.getId())
+                .setTimeMin(timeMinDateTime)
+                .setTimeMax(timeMaxDateTime)
+                .setSingleEvents(true)
+                .setShowDeleted(false)
+                .execute().getItems();
+        List<Event> usualEvents = new ArrayList<>();
+        for (Event event : allDateEvents) {
+            if (event.getStart().getDateTime() != null) {
+                usualEvents.add(event);
+            }
+        }
+        return usualEvents;
+    }
+
+    public DateTimeConverter getDateTimeConverterForTimeZone(@Nullable String calendarTimeZone) {
+        return new DateTimeConverter(calendarTimeZone);
+    }
+
+    public void patchEventFromCalendar(com.google.api.services.calendar.model.Calendar calendar, String eventId,
+                                       Event eventPatch) throws IOException {
+        myService.events().patch(calendar.getId(), eventId, eventPatch).execute();
     }
 
 }
