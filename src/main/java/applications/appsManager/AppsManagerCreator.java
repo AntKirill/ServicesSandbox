@@ -14,17 +14,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.prefs.Preferences;
 
 
 public class AppsManagerCreator extends ApplicationCreator {
     private static final @NotNull Logger LOGGER = Logger.getLogger(AppsManagerCreator.class);
 
     @Override
-    protected Object createApplicationController() {
-        return new AppsManagerControllerImpl();
+    protected @NotNull Object createApplicationController() {
+        return new AppsManagerControllerImpl(Preferences.userRoot().node("AppsManagerNode"));
     }
 
     @Override
+    @NotNull
     protected Application.Viewable createConsoleUi(Object applicationController) {
         return new Application.Viewable() {
             private final @NotNull AppsManagerController myController = (AppsManagerController) applicationController;
@@ -96,6 +98,7 @@ public class AppsManagerCreator extends ApplicationCreator {
     }
 
     @Override
+    @NotNull
     protected Application.Viewable createGui(Object applicationController, @Nullable JFrame parent) {
         return new Application.Viewable() {
             private void centreWindow(Window frame) {
