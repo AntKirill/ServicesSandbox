@@ -105,8 +105,13 @@ public class GoogleCalendarApiRequestsRunner implements ApiRequestsRunner {
     @NotNull
     public List<Event> getUsualEventsOnDateFromCalendar(@NotNull LocalDate date,
                                                         @NotNull com.google.api.services.calendar.model.Calendar calendar) throws IOException {
-        final LocalDateTime startDateTime = date.atStartOfDay();
-        final LocalDateTime endDateTime = date.plusDays(1).atStartOfDay();
+        return getUsualEventsOnDateFromCalendarLaterThanTime(date.atStartOfDay(), calendar);
+    }
+
+    @NotNull
+    public List<Event> getUsualEventsOnDateFromCalendarLaterThanTime(@NotNull LocalDateTime startDateTime,
+                                                                     @NotNull com.google.api.services.calendar.model.Calendar calendar) throws IOException {
+        final LocalDateTime endDateTime = startDateTime.plusDays(1).toLocalDate().atStartOfDay();
         final DateTimeConverter dateTimeConverterForTimeZone = getDateTimeConverterForTimeZone(calendar.getTimeZone());
         final DateTime timeMinDateTime = dateTimeConverterForTimeZone.toGoogleDateTime(startDateTime);
         final DateTime timeMaxDateTime = dateTimeConverterForTimeZone.toGoogleDateTime(endDateTime);
@@ -117,6 +122,7 @@ public class GoogleCalendarApiRequestsRunner implements ApiRequestsRunner {
                 .setShowDeleted(false)
                 .execute().getItems();
         return allDateEvents.stream().filter(event -> event.getStart().getDateTime() != null).collect(Collectors.toList());
+
     }
 
     @NotNull
